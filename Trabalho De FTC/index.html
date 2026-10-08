@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Visão Saudável - Portal completo sobre saúde dos olhos, ergonomia e prevenção ocular.">
+    <title>Visão Saudável</title>
+
+    <style>
+        /* =====================================================
+           CONFIGURAÇÕES DE TEMAS E VARIÁVEIS
+        ===================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* TEMA PADRÃO: ESCURO / SLATE NEON */
+        :root {
+            --bg-body: #0d1520;
+            --bg-card: #162232;
+            --bg-card-hover: #1c2c40;
+            --bg-menu: #080d14;
+            --borda: #23354d;
+            --texto-main: #f1f5f9;
+            --texto-suave: #94a3b8;
+            --accent-primary: #00e5ff;
+            --accent-secondary: #3b82f6;
+            --accent-destaque: #ffb703;
+            --sucesso-bg: #064e3b;
+            --sucesso-texto: #6ee7b7;
+        }
+
+        /* TEMA MODO LEITURA (SÉPIA / PAPEL CREME) */
+        body.modo-leitura {
+            --bg-body: #fbf7ee;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f5efe2;
+            --bg-menu: #2d251e;
+            --borda: #e6decb;
+            --texto-main: #2d251e;
+            --texto-suave: #635548;
+            --accent-primary: #8b5cf6;
+            --accent-secondary: #6d28d9;
+            --accent-destaque: #d97706;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--texto-main);
+            line-height: 1.7;
+            font-size: 16px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* =====================================================
+           CABEÇALHO HERO
+        ===================================================== */
+        header {
+            background: linear-gradient(135deg, #080d14 0%, #111c2e 100%);
+            border-bottom: 2px solid var(--borda);
+            text-align: center;
+            padding: 60px 20px 45px;
+        }
+
+        header h1 {
+            font-size: 44px;
+            color: var(--accent-primary);
+            margin-bottom: 12px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            font-size: 18px;
+            color: var(--texto-suave);
+            max-width: 700px;
+            margin: 0 auto 15px;
+        }
+
+        .tag-sub {
+            background: rgba(0, 229, 255, 0.1);
+            color: var(--accent-primary);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            font-size: 12px;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* =====================================================
+           MENU FIXO
+        ===================================================== */
+        nav {
+            background: var(--bg-menu);
+            padding: 12px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--borda);
+        }
+
+        nav a {
+            display: inline-block;
+            color: #ffffff;
+            text-decoration: none;
+            margin: 3px 5px;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            background: rgba(0, 229, 255, 0.15);
+            color: var(--accent-primary);
+        }
+
+        .nav-ia {
+            background: var(--accent-primary);
+            color: #0d1520 !important;
+            font-weight: bold;
+        }
+
+        .nav-ia:hover {
+            opacity: 0.9;
+        }
+
+        /* =====================================================
+           BARRA DE ACESSIBILIDADE
+        ===================================================== */
+        .controles {
+            background: var(--bg-card);
+            text-align: center;
+            padding: 12px;
+            border-bottom: 1px solid var(--borda);
+        }
+
+        button {
+            border: none;
+            background: rgba(0, 229, 255, 0.12);
+            color: var(--accent-primary);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            padding: 8px 15px;
+            margin: 3px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: var(--accent-primary);
+            color: #0d1520;
+        }
+
+        /* =====================================================
+           ESTRUTURA DE CONTEÚDO
+        ===================================================== */
+        main {
+            width: 100%;
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        section {
+            background: var(--bg-card);
+            padding: 35px;
+            margin-bottom: 30px;
+            border-radius: 18px;
+            border: 1px solid var(--borda);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            transition: 0.3s;
+        }
+
+        section:hover {
+            border-color: rgba(0, 229, 255, 0.3);
+        }
+
+        section h2 {
+            color: var(--accent-primary);
+            font-size: 26px;
+            margin-bottom: 16px;
+        }
+
+        section h3 {
+            color: var(--accent-secondary);
+            margin-top: 22px;
+            margin-bottom: 10px;
+            font-size: 19px;
+        }
+
+        section p {
+            color: var(--texto-main);
+            margin-bottom: 14px;
+        }
+
+        .introducao {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .introducao-destaque {
+            background: rgba(0, 229, 255, 0.05);
+            padding: 24px;
+            border-radius: 14px;
+            border-left: 4px solid var(--accent-primary);
+        }
+
+        .video-area { text-align: center; }
+
+        .video-box {
+            width: 100%;
+            max-width: 850px;
+            margin: 20px auto 10px;
+            background: #000;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--borda);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+        }
+
+        .video-box video { display: block; width: 100%; }
+
+        .destaque {
+            background: rgba(0, 229, 255, 0.06);
+            border-left: 4px solid var(--accent-primary);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 18px;
+            color: var(--texto-main);
+        }
+
+        .lista-cuidados {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .lista-cuidados li {
+            background: var(--bg-card-hover);
+            margin-bottom: 10px;
+            padding: 12px 15px 12px 42px;
+            border-radius: 10px;
+            position: relative;
+            border: 1px solid var(--borda);
+            color: var(--texto-main);
+        }
+
+        .lista-cuidados li::before {
+            content: "✓";
+            position: absolute;
+            left: 16px;
+            color: var(--accent-primary);
+            font-weight: bold;
+        }
+
+        /* GRID DE CARDS */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 22px;
+        }
+
+        .card {
+            background: var(--bg-card-hover);
+            padding: 24px;
+            border-radius: 14px;
+            border: 1px solid var(--borda);
+            transition: 0.3s;
+            color: var(--texto-main);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-primary);
+        }
+
+        .card h3 { margin-top: 0; color: var(--accent-primary); }
+
+        /* =====================================================
+           ABAS INTERATIVAS
+        ===================================================== */
+        .tab-buttons {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid var(--borda);
+            padding-bottom: 12px;
+        }
+
+        .tab-btn {
+            background: var(--bg-card-hover);
+            color: var(--texto-main);
+            border: 1px solid var(--borda);
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--accent-primary);
+            color: #0d1520;
+            border-color: var(--accent-primary);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-content.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* =====================================================
+           GRID DE FERRAMENTAS INTERATIVAS
+        ===================================================== */
+        .ferramentas-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .ferramenta-box {
+            background: var(--bg-card-hover);
+            padding: 25px;
+            border-radius: 14px;
+            border: 1px solid var(--borda);
+            text-align: center;
+        }
+
+        .snellen-chart {
+            background: #ffffff;
+            color: #000000;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            margin: 15px 0;
+            font-family: monospace;
+            font-weight: bold;
+            letter-spacing: 12px;
+            line-height: 1.4;
+        }
+
+        .timer-display {
+            font-size: 38px;
+            font-weight: bold;
+            color: var(--accent-primary);
+            margin: 10px 0;
+            font-family: monospace;
+        }
+
+        /* =====================================================
+           SEÇÃO IA EM DESTAQUE
+        ===================================================== */
+        .secao-atualizacao {
+            background: linear-gradient(135deg, #080d14, #162232);
+            border: 1px solid var(--accent-primary);
+            border-radius: 18px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .badge-novo {
+            background: var(--accent-primary);
+            color: #0d1520;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 4px 14px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .secao-atualizacao button {
+            background: var(--accent-primary);
+            color: #0d1520;
+            font-size: 16px;
+            padding: 12px 30px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        /* AUTORES */
+        .dev-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .dev-card {
+            background: var(--bg-card-hover);
+            padding: 22px;
+            border-radius: 14px;
+            border-left: 4px solid var(--accent-primary);
+            border-top: 1px solid var(--borda);
+            border-right: 1px solid var(--borda);
+            border-bottom: 1px solid var(--borda);
+        }
+
+        /* =====================================================
+           FEEDBACK
+        ===================================================== */
+        .feedback { display: flex; flex-direction: column; }
+        .feedback label { font-weight: bold; margin-top: 15px; margin-bottom: 5px; color: var(--texto-main); }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--borda);
+            background: var(--bg-card-hover);
+            color: var(--texto-main);
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        textarea { min-height: 120px; resize: vertical; }
+
+        .sucesso {
+            display: none;
+            background: var(--sucesso-bg);
+            color: var(--sucesso-texto);
+            padding: 14px;
+            margin-top: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .sucesso.mostrar { display: block; }
+
+        /* =====================================================
+           WIDGET DA IA
+        ===================================================== */
+        #ia-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 80px;
+            background: var(--accent-primary);
+            color: #0d1520;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: bold;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            z-index: 1000;
+        }
+
+        #ia-container {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 380px;
+            max-width: 92vw;
+            height: 520px;
+            background: var(--bg-card);
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 1001;
+            border: 1px solid var(--accent-primary);
+        }
+
+        #ia-container.ativo { display: flex; }
+
+        .ia-header {
+            background: var(--bg-menu);
+            color: var(--accent-primary);
+            padding: 15px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--borda);
+        }
+
+        .ia-header button {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .ia-chips {
+            display: flex;
+            gap: 6px;
+            padding: 10px;
+            background: var(--bg-card-hover);
+            overflow-x: auto;
+            border-bottom: 1px solid var(--borda);
+        }
+
+        .chip {
+            background: rgba(0, 229, 255, 0.1);
+            color: var(--accent-primary);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .chip:hover {
+            background: var(--accent-primary);
+            color: #0d1520;
+        }
+
+        .ia-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: var(--bg-body);
+        }
+
+        .msg {
+            max-width: 88%;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.45;
+        }
+
+        .msg-ia {
+            background: var(--bg-card);
+            color: var(--texto-main);
+            border: 1px solid var(--borda);
+            align-self: flex-start;
+        }
+
+        .msg-user {
+            background: var(--accent-primary);
+            color: #0d1520;
+            font-weight: 600;
+            align-self: flex-end;
+        }
+
+        .ia-input-area {
+            display: flex;
+            padding: 10px;
+            background: var(--bg-card);
+            border-top: 1px solid var(--borda);
+            gap: 5px;
+        }
+
+        .ia-input-area input { flex: 1; padding: 8px 12px; }
+
+        /* RODAPÉ E TOPO */
+        footer {
+            background: var(--bg-menu);
+            color: var(--texto-suave);
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 13px;
+            border-top: 1px solid var(--borda);
+        }
+
+        #topo {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            z-index: 999;
+        }
+
+        #topo.mostrar { display: flex; }
+
+        body.preto-branco { filter: grayscale(100%); }
+        body.zoom1 { font-size: 18px; }
+        body.zoom2 { font-size: 20px; }
+
+        @media (max-width: 850px) {
+            .introducao, .ferramentas-grid { grid-template-columns: 1fr; }
+            .cards, .dev-cards { grid-template-columns: repeat(1, 1fr); }
+            header h1 { font-size: 34px; }
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 26px; }
+            nav a { font-size: 12px; margin: 2px; }
+            main { padding: 18px 10px; }
+            section { padding: 22px 16px; }
+            #ia-toggle { right: 75px; padding: 10px 16px; font-size: 13px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO HERO -->
+    <header>
+        <h1>VISÃO SAUDÁVEL</h1>
+        <p>Portal educativo completo sobre saúde dos olhos, prevenção ocular e ergonomia digital.</p>
+        <span class="tag-sub">Luz Azul • Proteção UV • Erros Refrativos • Doenças Oculares • Ergonomia</span>
+    </header>
+
+    <!-- NAVEGAÇÃO -->
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#video">🎥 Vídeo</a>
+        <a href="#luz-azul">Luz Azul</a>
+        <a href="#oculos">Óculos de Sol</a>
+        <a href="#problemas-visao">Erros Refrativos</a>
+        <a href="#doencas-oculares">Doenças Oculares</a>
+        <a href="#lentes-contato">Lentes & Higiene</a>
+        <a href="#ergonomia-ambiente">Ergonomia</a>
+        <a href="#sinais-alerta">⚠️ Sinais de Alerta</a>
+        <a href="#ferramentas">🧪 Ferramentas</a>
+        <a href="#atualizacao-ia" class="nav-ia">🤖 Assistente IA</a>
+        <a href="#feedback">Feedback</a>
+    </nav>
+
+    <!-- BARRA DE ACESSIBILIDADE -->
+    <div class="controles">
+        <strong>♿ Acessibilidade:</strong>
+        <button type="button" onclick="aumentarZoom()">🔍 Zoom +</button>
+        <button type="button" onclick="diminuirZoom()">🔎 Zoom -</button>
+        <button type="button" onclick="resetarZoom()">↺ Normal</button>
+        <button type="button" onclick="pretoBranco()">⚫⚪ P&B</button>
+        <button type="button" onclick="alternarModoLeitura()">📜 Modo Leitura</button>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main>
+
+        <!-- INÍCIO -->
+        <section id="inicio" class="introducao">
+            <div>
+                <h2>👋 Bem-vindo ao Visão Saudável</h2>
+                <p>A visão é um dos nossos sentidos mais vitais, responsável pela absorção da maior parte dos estímulos ao nosso redor. No entanto, o aumento exponencial das horas em telas e ambientes fechados tem gerado novo estresse à musculatura ocular.</p>
+                <p>Neste portal interativo e expandido, você encontrará guias completos sobre ergonomia, prevenção de doenças oculares, uso de lentes e ferramentas práticas para o seu dia a dia.</p>
+            </div>
+            <div class="introducao-destaque">
+                <strong>💡 Finalidade Educativa</strong>
+                <p>Este site possui caráter estritamente educativo. As informações não substituem consultas, exames ou prescrições realizadas por um médico oftalmologista.</p>
+            </div>
+        </section>
+
+        <!-- VÍDEO -->
+        <section id="video" class="video-area">
+            <h2>🎥 Vídeo Educativo: A Saúde dos Seus Olhos</h2>
+            <p>Assista ao vídeo produzido por nossa equipe para compreender a anatomia ocular e a prevenção no dia a dia.</p>
+            <div class="video-box">
+                <video controls preload="auto" playsinline width="100%">
+                    <source src="./video-visao.mp4" type="video/mp4">
+                    Seu navegador não suporta a reprodução deste vídeo.
+                </video>
+            </div>
+            <p style="font-size: 13px; margin-top: 10px;">🎬 Vídeo educativo produzido por <strong>Vitor Hugo</strong>.</p>
+        </section>
+
+        <!-- LUZ AZUL E ERGONOMIA -->
+        <section id="luz-azul">
+            <h2>🔵 Luz Azul e Ergonomia Visual Digital</h2>
+            <p>A luz azul (HEV) faz parte do espectro visível. Embora emitida naturalmente pelo Sol, a superexposição a telas LED (monitores, celulares, tablets) causa sobrecarga no músculo ciliar.</p>
+
+            <div class="cards">
+                <div class="card">
+                    <h3>👁️ Cansaço Visual Digital</h3>
+                    <p>O uso prolongado de telas reduz as piscadas de 20 para cerca de 5 por minuto, causando ressecamento da córnea e sensação de areia nos olhos.</p>
+                </div>
+                <div class="card">
+                    <h3>🌙 Bloqueio de Melatonina</h3>
+                    <p>A exposição à luz azul à noite engana o cérebro, suprimindo a produção do hormônio do sono e afetando o descanso profundo.</p>
+                </div>
+                <div class="card">
+                    <h3>⏱️ Regra do 20-20-20</h3>
+                    <p>A cada 20 minutos focando telas, olhe para um objeto a 6 metros de distância durante 20 segundos para relaxar o foco ocular.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ÓCULOS DE SOL -->
+        <section id="oculos">
+            <h2>🕶️ Proteção Ultravioleta (UV)</h2>
+            <p>Os raios ultravioleta (UVA e UVB) causam danos acumulativos na retina e aceleração de doenças como a catarata e o pterígio.</p>
+
+            <div class="cards">
+                <div class="card">
+                    <h3>☀️ Filtro UV400</h3>
+                    <p>Certifique-se de usar óculos com selo UV400, que bloqueiam de 99% a 100% da radiação ultravioleta prejudicial.</p>
+                </div>
+                <div class="card">
+                    <h3>⚠️ O Perigo das Lentes Falsas</h3>
+                    <p>Lentes escuras sem filtro solar dilatam a pupila, fazendo com que uma quantidade MAIOR de radiação entre diretamente nos olhos.</p>
+                </div>
+                <div class="card">
+                    <h3>🌊 Lentes Polarizadas</h3>
+                    <p>Reduzem reflexos intensos em superfícies horizontais como asfalto e água, trazendo maior conforto ao dirigir ou em dias ensolarados.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ERROS REFRATIVOS (ABAS) -->
+        <section id="problemas-visao">
+            <h2>👓 Erros Refrativos</h2>
+            <p>Clique nas abas abaixo para alternar os detalhes de cada problema de refração:</p>
+
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="abrirAba(event, 'tab-miopia')">👓 Miopia</button>
+                <button class="tab-btn" onclick="abrirAba(event, 'tab-astigmatismo')">👁️ Astigmatismo</button>
+                <button class="tab-btn" onclick="abrirAba(event, 'tab-hipermetropia')">🔍 Hipermetropia</button>
+                <button class="tab-btn" onclick="abrirAba(event, 'tab-presbiopia')">👴 Presbiopia</button>
+            </div>
+
+            <div id="tab-miopia" class="tab-content active">
+                <h3>👓 Miopia (Dificuldade para enxergar de longe)</h3>
+                <p>Ocorre quando o globo ocular é anatomicamente mais longo, fazendo a imagem focar <strong>antes da retina</strong>.</p>
+                <div class="destaque">
+                    <strong>Sintomas:</strong> Visão embaçada ao olhar para longe (lousa, placas), franzir os olhos para focar. Corrigida com lentes divergentes (negativas).
+                </div>
+            </div>
+
+            <div id="tab-astigmatismo" class="tab-content">
+                <h3>👁️ Astigmatismo (Visão distorcida)</h3>
+                <p>Ocorre por uma imperfeição no formato da córnea ou cristalino (formato ovalado), gerando <strong>múltiplos pontos de foco</strong>.</p>
+                <div class="destaque">
+                    <strong>Sintomas:</strong> Visão borrada de perto e de longe, confusão entre letras parecidas (F e P) e auréolas luminosas à noite.
+                </div>
+            </div>
+
+            <div id="tab-hipermetropia" class="tab-content">
+                <h3>🔍 Hipermetropia (Dificuldade de focar de perto)</h3>
+                <p>O olho é ligeiramente menor do que o normal, fazendo com que a imagem se forme <strong>atrás da retina</strong>.</p>
+                <div class="destaque">
+                    <strong>Sintomas:</strong> Esforço excessivo para ler, cansaço visual e dores de cabeça na região frontal após o trabalho.
+                </div>
+            </div>
+
+            <div id="tab-presbiopia" class="tab-content">
+                <h3>👴 Presbiopia (Vista Cansada)</h3>
+                <p>Surgimento gradual após os 40 anos devido à perda natural de flexibilidade do cristalino.</p>
+                <div class="destaque">
+                    <strong>Sintomas:</strong> Necessidade de afastar o celular ou livros para conseguir ler ("síndrome do braço curto").
+                </div>
+            </div>
+        </section>
+
+        <!-- DOENÇAS OCULARES -->
+        <section id="doencas-oculares">
+            <h2>🏥 Outras Doenças Oculares</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>🌫️ Catarata</h3>
+                    <p>Opacificação do cristalino que torna a visão turva. A cirurgia moderna substitui a lente opaca por uma lente intraocular transparente.</p>
+                </div>
+                <div class="card">
+                    <h3>👁️ Glaucoma</h3>
+                    <p>Aumento da pressão intraocular que danifica o nervo óptico de forma silenciosa e irreversível sem tratamento adequado.</p>
+                </div>
+                <div class="card">
+                    <h3>💧 Olho Seco</h3>
+                    <p>Alteração no filme lacrimal provocada por vento, ar-condicionado e tempo prolongado sem piscar na frente de telas.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- NOVA SEÇÃO: LENTES DE CONTATO & HIGIENE -->
+        <section id="lentes-contato">
+            <h2>🧼 Cuidados com Lentes de Contato</h2>
+            <p>O uso inadequado de lentes de contato pode resultar em infecções sérias na córnea (ceratites). Siga sempre o protocolo básico de higienização:</p>
+
+            <ul class="lista-cuidados">
+                <li>Lave bem as mãos com água e sabão neutro antes de manusear as lentes.</li>
+                <li>Nunca higienize ou guarde lentes com água da torneira ou soro caseiro — use apenas solução multiuso apropriada.</li>
+                <li>Respeite rigorosamente o prazo de descarte da lente (diário, quinzena ou mensal).</li>
+                <li>Nunca durma com as lentes de contato, a menos que haja orientação expressa do seu oftalmologista.</li>
+                <li>Troque o estojo das lentes periodicamente para evitar o acúmulo de bactérias.</li>
+            </ul>
+        </section>
+
+        <!-- NOVA SEÇÃO: ERGONOMIA DO AMBIENTE -->
+        <section id="ergonomia-ambiente">
+            <h2>💡 Ergonomia do Ambiente de Trabalho e Estudo</h2>
+            <p>Pequenos ajustes na iluminação e na postura evitam o estresse nos olhos durante o dia:</p>
+
+            <div class="cards">
+                <div class="card">
+                    <h3>🖥️ Posição do Monitor</h3>
+                    <p>A tela deve ficar a uma distância entre 50 cm e 70 cm dos olhos, com o topo do monitor na altura da linha dos olhos.</p>
+                </div>
+                <div class="card">
+                    <h3>💡 Iluminação Adequada</h3>
+                    <p>Evite usar telas totalmente no escuro. Mantenha o ambiente bem iluminado sem reflexos diretos no monitor.</p>
+                </div>
+                <div class="card">
+                    <h3>💨 Umidade do Ar</h3>
+                    <p>Evite ventiladores ou ar-condicionado apontados diretamente para o rosto para conter a evaporação da lágrima.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- NOVA SEÇÃO: SINAIS DE ALERTA -->
+        <section id="sinais-alerta">
+            <h2>⚠️ Sinais de Alerta: Quando ir Urgente ao Oftalmologista?</h2>
+            <p>Fique atento a sintomas que exigem avaliação médica imediata:</p>
+
+            <div class="destaque" style="border-color: #ef4444; background: rgba(239, 68, 68, 0.08);">
+                <strong>🚨 Procure atendimento imediato caso sinta:</strong>
+                <ul style="margin-top: 10px; margin-left: 20px;">
+                    <li>Perda súbita ou embaçamento repentino da visão.</li>
+                    <li>Visão de pontos pretos ("moscas volantes") em grande quantidade ou flashes de luz.</li>
+                    <li>Dor ocular intensa associada a vermelhidão ou náuseas.</li>
+                    <li>Sensação de "cortina preta" cobrindo parte do campo de visão.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- FERRAMENTAS INTERATIVAS -->
+        <section id="ferramentas">
+            <h2>🧪 Central de Ferramentas Interativas</h2>
+            <div class="ferramentas-grid">
+                <div class="ferramenta-box">
+                    <h3>⏱️ Cronômetro 20-20-20</h3>
+                    <p>Inicie o cronômetro para lembrar de pausar o uso de telas:</p>
+                    <div class="timer-display" id="timer-display">20:00</div>
+                    <button onclick="iniciarTimer()">▶️ Iniciar</button>
+                    <button onclick="pausarTimer()">⏸️ Pausar</button>
+                    <button onclick="resetarTimer()">↺ Resetar</button>
+                </div>
+
+                <div class="ferramenta-box">
+                    <h3>👁️ Teste de Nitidez (Snellen)</h3>
+                    <p>Afaste-se a 1 metro da tela e cheque até qual linha enxerga nitidamente:</p>
+                    <div class="snellen-chart">
+                        <span style="font-size: 36px;">E</span><br>
+                        <span style="font-size: 26px;">F P</span><br>
+                        <span style="font-size: 18px;">T O Z</span><br>
+                        <span style="font-size: 14px;">L P E D</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RECURSO IA -->
+        <section id="atualizacao-ia" class="secao-atualizacao">
+            <span class="badge-novo">✨ Assistente Inteligente</span>
+            <h2>🤖 Tire suas Dúvidas com nossa IA</h2>
+            <p>Pergunte sobre miopia, astigmatismo, cirurgias, colírios, lentes e ergonomia em tempo real.</p>
+            <button type="button" onclick="toggleIA()">💬 Abrir Assistente de IA</button>
+        </section>
+
+        <!-- FEEDBACK -->
+        <section id="feedback">
+            <h2>💬 Deixe seu Feedback</h2>
+            <form class="feedback" onsubmit="enviarFeedback(event)">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" placeholder="Digite seu nome" required>
+
+                <label for="avaliacao">Sua Nota:</label>
+                <select id="avaliacao" required>
+                    <option value="">Selecione uma nota</option>
+                    <option value="5">⭐⭐⭐⭐⭐ Excelente conteúdo</option>
+                    <option value="4">⭐⭐⭐⭐ Muito bom</option>
+                    <option value="3">⭐⭐⭐ Bom</option>
+                    <option value="2">⭐⭐ Regular</option>
+                    <option value="1">⭐ Ruim</option>
+                </select>
+
+                <label for="mensagem">Comentário:</label>
+                <textarea id="mensagem" placeholder="Escreva sua opinião..." required></textarea>
+
+                <button type="submit">📩 Enviar Feedback</button>
+
+                <div id="sucesso" class="sucesso">
+                    ✅ Feedback enviado com sucesso!
+                </div>
+            </form>
+        </section>
+
+        <!-- DESENVOLVEDORES -->
+        <section>
+            <h2>👨‍💻 Equipe de Desenvolvimento</h2>
+            <div class="dev-cards">
+                <div class="dev-card">
+                    <h3>💻 Cauã Victor</h3>
+                    <p><strong>Desenvolvimento Web & IA:</strong> Responsável por toda a programação do site (HTML/CSS/JS), design responsivo, ferramentas interativas e pela Inteligência Artificial.</p>
+                </div>
+                <div class="dev-card">
+                    <h3>🎥 Vitor Hugo</h3>
+                    <p><strong>Produção Audiovisual:</strong> Responsável pela gravação, roteiro e edição do vídeo educativo sobre cuidados com a visão.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- WIDGET DA IA -->
+    <button id="ia-toggle" onclick="toggleIA()">🤖 Pergunte à IA</button>
+    
+    <div id="ia-container">
+        <div class="ia-header">
+            <span>🤖 Assistente Visão Saudável</span>
+            <button onclick="toggleIA()">✕</button>
+        </div>
+
+        <div class="ia-chips">
+            <span class="chip" onclick="perguntarChip('O que é a regra 20-20-20?')">⏱️ Regra 20-20-20</span>
+            <span class="chip" onclick="perguntarChip('Miopia tem cura?')">👓 Cura da Miopia</span>
+            <span class="chip" onclick="perguntarChip('O que faz os óculos pirata?')">⚠️ Óculos Pirata</span>
+            <span class="chip" onclick="perguntarChip('O que é Glaucoma?')">👁️ Glaucoma</span>
+        </div>
+
+        <div class="ia-messages" id="ia-messages">
+            <div class="msg msg-ia">
+                Olá! Sou seu assistente de saúde ocular. Escolha um tópico acima ou digite sua pergunta!
+            </div>
+        </div>
+
+        <div class="ia-input-area">
+            <input type="text" id="ia-input" placeholder="Digite sua pergunta..." onkeypress="tratarEnter(event)">
+            <button onclick="enviarMensagemIA()">Enviar</button>
+        </div>
+    </div>
+
+    <!-- BOTÃO TOPO -->
+    <button id="topo" onclick="voltarAoTopo()" title="Voltar ao topo">↑</button>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>© 2026 Visão Saudável | Projeto Educacional</p>
+        <p>Desenvolvido para conscientização sobre ergonomia visual e prevenção ocular.</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        /* ABAS INTERATIVAS */
+        function abrirAba(evt, tabId) {
+            let contents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < contents.length; i++) contents[i].classList.remove("active");
+
+            let buttons = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < buttons.length; i++) buttons[i].classList.remove("active");
+
+            document.getElementById(tabId).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        /* CONTROLE DE ZOOM E MODOS DE COR */
+        let zoom = 0;
+        function aumentarZoom() { if (zoom < 2) zoom++; atualizarZoom(); }
+        function diminuirZoom() { if (zoom > 0) zoom--; atualizarZoom(); }
+        function resetarZoom() { zoom = 0; atualizarZoom(); }
+
+        function atualizarZoom() {
+            document.body.classList.remove("zoom1", "zoom2");
+            if (zoom === 1) document.body.classList.add("zoom1");
+            if (zoom === 2) document.body.classList.add("zoom2");
+        }
+
+        function pretoBranco() { document.body.classList.toggle("preto-branco"); }
+
+        function alternarModoLeitura() { 
+            document.body.classList.toggle("modo-leitura"); 
+        }
+
+        /* CRONÔMETRO 20-20-20 */
+        let tempoRestante = 1200;
+        let timerInterval = null;
+
+        function atualizarDisplayTimer() {
+            let minutos = Math.floor(tempoRestante / 60);
+            let segundos = tempoRestante % 60;
+            document.getElementById("timer-display").textContent = 
+                `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+        }
+
+        function iniciarTimer() {
+            if (timerInterval) return;
+            timerInterval = setInterval(() => {
+                if (tempoRestante > 0) {
+                    tempoRestante--;
+                    atualizarDisplayTimer();
+                } else {
+                    alert("⏱️ Pausa! Olhe para um ponto a 6 metros de distância durante 20 segundos para relaxar o foco ocular.");
+                    resetarTimer();
+                }
+            }, 1000);
+        }
+
+        function pausarTimer() {
+            clearInterval(timerInterval);
+            timerInterval = null;
+        }
+
+        function resetarTimer() {
+            pausarTimer();
+            tempoRestante = 1200;
+            atualizarDisplayTimer();
+        }
+
+        /* BOTÃO VOLTAR AO TOPO */
+        window.onscroll = function() {
+            let btnTopo = document.getElementById("topo");
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btnTopo.classList.add("mostrar");
+            } else {
+                btnTopo.classList.remove("mostrar");
+            }
+        };
+
+        function voltarAoTopo() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+        /* FORMULÁRIO DE FEEDBACK */
+        function enviarFeedback(event) {
+            event.preventDefault();
+            document.getElementById("sucesso").classList.add("mostrar");
+            event.target.reset();
+            setTimeout(() => document.getElementById("sucesso").classList.remove("mostrar"), 4000);
+        }
+
+        /* CHATBOT DA IA */
+        function toggleIA() {
+            document.getElementById("ia-container").classList.toggle("ativo");
+        }
+
+        function tratarEnter(e) {
+            if (e.key === 'Enter') enviarMensagemIA();
+        }
+
+        function perguntarChip(texto) {
+            document.getElementById("ia-input").value = texto;
+            enviarMensagemIA();
+        }
+
+        function enviarMensagemIA() {
+            let input = document.getElementById("ia-input");
+            let texto = input.value.trim();
+            if (!texto) return;
+
+            adicionarMensagem(texto, "user");
+            input.value = "";
+
+            let idCarregando = "msg-temp-" + Date.now();
+            adicionarMensagemCarregando(idCarregando);
+
+            setTimeout(() => {
+                removerMensagem(idCarregando);
+                let resposta = gerarRespostaIA(texto);
+                adicionarMensagem(resposta, "ia");
+            }, 450);
+        }
+
+        function adicionarMensagem(texto, tipo) {
+            let container = document.getElementById("ia-messages");
+            let div = document.createElement("div");
+            div.className = `msg msg-${tipo}`;
+            div.textContent = texto;
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function adicionarMensagemCarregando(id) {
+            let container = document.getElementById("ia-messages");
+            let div = document.createElement("div");
+            div.className = "msg msg-ia";
+            div.id = id;
+            div.textContent = "Digitando...";
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function removerMensagem(id) {
+            let el = document.getElementById(id);
+            if (el) el.remove();
+        }
+
+        function gerarRespostaIA(pergunta) {
+            let p = pergunta.toLowerCase();
+
+            if (p.includes("miopia") || p.includes("longe")) {
+                if (p.includes("cura") || p.includes("cirurgia") || p.includes("laser")) {
+                    return "👓 A miopia pode ser corrigida com cirurgia refrativa a laser (LASIK/PRK) em adultos com grau estabilizado.";
+                }
+                return "👓 A miopia ocorre quando o olho é mais longo e a imagem foca antes da retina, dificultando a visão de longe.";
+            }
+            else if (p.includes("astigmatismo") || p.includes("borrad")) {
+                return "👁️ O astigmatismo é gerado por uma curvatura irregular da córnea, resultando em visão desfocada de perto e de longe.";
+            }
+            else if (p.includes("hipermetropia") || p.includes("perto")) {
+                return "🔍 A hipermetropia é a dificuldade de focar de perto, pois o olho é mais curto do que o normal.";
+            }
+            else if (p.includes("presbiopia") || p.includes("vista cansada") || p.includes("braço curto")) {
+                return "👴 A presbiopia surge após os 40 anos devido à perda natural de elasticidade do cristalino.";
+            }
+            else if (p.includes("luz azul") || p.includes("tela") || p.includes("20-20-20")) {
+                return "🔵 A luz azul das telas gera fadiga visual. Lembre-se da regra 20-20-20: pausas a cada 20 min olhando a 6m por 20 segundos.";
+            }
+            else if (p.includes("óculos") || p.includes("sol") || p.includes("pirata")) {
+                return "🕶️ Óculos sem filtro UV400 dilatam a pupila e aumentam o risco de lesões solares na retina!";
+            }
+            else if (p.includes("catarata")) {
+                return "🌫️ A catarata é a opacificação da lente natural do olho e é corrigida com cirurgia de lente intraocular.";
+            }
+            else if (p.includes("glaucoma")) {
+                return "👁️ O glaucoma é o aumento da pressão ocular que lesiona o nervo óptico. Exige acompanhamento oftalmológico regular.";
+            }
+            else if (p.includes("lente") || p.includes("higiene") || p.includes("estojo")) {
+                return "🧼 Sempre limpe as lentes de contato com solução própria (nunca água da torneira!) e nunca durma com elas sem recomendação.";
+            }
+            else if (p.includes("quem fez") || p.includes("criador") || p.includes("desenvolvedor")) {
+                return "👨‍💻 O site e a IA foram programados por Cauã Victor e o vídeo educativo foi produzido por Vitor Hugo!";
+            }
+            else {
+                return "🤖 Sou o assistente de saúde visual! Pergunto-me sobre miopia, astigmatismo, telas, lentes de contato, óculos de sol ou sintomas.";
+            }
+        }
+    </script>
+
+</body>
+</html>
